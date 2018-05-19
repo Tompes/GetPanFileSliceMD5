@@ -5,7 +5,7 @@
  */
 
 require 'func.class.php';
-
+header("Content-type: application/json; charset=utf-8");
 $s = new GetSliceMD5(); //instantiate
 
 if(isset($_GET['action'])){
