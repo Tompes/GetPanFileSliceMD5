@@ -28,7 +28,7 @@ class GetSliceMD5 {
         $referrer = $referrer?$referrer:"https://pan.baidu.com/disk/home";
 
         $opts = [
-            "ssl" => [
+            "http" => [
                 "method" => $post?"POST":"GET",
                 "timeout"=>60,
                 "header" => "Accept-language: *\r\n" .
@@ -42,6 +42,9 @@ class GetSliceMD5 {
                     "Pragma:no-cache\r\n".
                     "User-Agent:{$ua}\r\n",
                 "content"=> $post?$post:"",
+
+            ],
+            "ssl"=>[
                 "verify_peer"=>false,
                 "verify_peer_name"=>false
             ]
@@ -49,7 +52,7 @@ class GetSliceMD5 {
 
         $context = stream_context_create($opts);
 
-        // Open the file using the HTTP headers set above , then return it.
+// Open the file using the HTTP headers set above , then return it.
 
         return @file_get_contents($link, false, $context);
 
