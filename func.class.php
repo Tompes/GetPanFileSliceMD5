@@ -42,6 +42,8 @@ class GetSliceMD5 {
                     "Pragma:no-cache\r\n".
                     "User-Agent:{$ua}\r\n",
                 "content"=> $post?$post:"",
+                "verify_peer"=>false,
+                "verify_peer_name"=>false
             ]
         ];
 
