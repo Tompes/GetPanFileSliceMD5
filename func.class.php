@@ -26,7 +26,7 @@ class GetSliceMD5 {
         $ua       = $ua?$ua:$_SERVER['HTTP_USER_AGENT'];
         $range    = $size?"Range: bytes=0-{$size}\r\n":"";
         $referrer = $referrer?$referrer:"https://pan.baidu.com/disk/home";
-
+        $link = str_replace("https://","http://",$link);
         $opts = [
             "http" => [
                 "method" => $post?"POST":"GET",
@@ -52,7 +52,7 @@ class GetSliceMD5 {
 
         $context = stream_context_create($opts);
 
-// Open the file using the HTTP headers set above , then return it.
+        // Open the file using the HTTP headers set above , then return it.
 
         return @file_get_contents($link, false, $context);
 
