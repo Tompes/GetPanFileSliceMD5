@@ -28,7 +28,7 @@ class GetSliceMD5 {
         $referrer = $referrer?$referrer:"https://pan.baidu.com/disk/home";
 
         $opts = [
-            "http" => [
+            "ssl" => [
                 "method" => $post?"POST":"GET",
                 "timeout"=>60,
                 "header" => "Accept-language: *\r\n" .
