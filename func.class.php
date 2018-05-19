@@ -49,7 +49,7 @@ class GetSliceMD5 {
 
         $context = stream_context_create($opts);
 
-// Open the file using the HTTP headers set above , then return it.
+        // Open the file using the HTTP headers set above , then return it.
 
         return @file_get_contents($link, false, $context);
 
