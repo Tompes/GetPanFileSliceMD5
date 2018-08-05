@@ -30,7 +30,7 @@ class GetSliceMD5 {
         $opts = [
             "http" => [
                 "method" => $post?"POST":"GET",
-                "timeout"=>60,
+                "timeout"=>30,
                 "header" => "Accept-language: *\r\n" .
                     $range.
                     "Accept:*/*\r\n".
@@ -52,9 +52,15 @@ class GetSliceMD5 {
 
         $context = stream_context_create($opts);
 
-        // Open the file using the HTTP headers set above , then return it.
-
-        return @file_get_contents($link, false, $context);
+// Open the file using the HTTP headers set above , then return it.
+        $timer = 0;
+        $result ="";
+        while($timer<3 && $result = @file_get_contents($link, false, $context)==false) $timer++;
+        if($timer==3){
+            $this->message = "Timeout!";
+            return false;
+        }
+        return $result;
 
     }
 }
